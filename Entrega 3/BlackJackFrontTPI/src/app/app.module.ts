@@ -6,7 +6,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { NgChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MesaComponent } from './mesa/mesa.component';
@@ -20,7 +19,6 @@ import { Reporte2Component } from './reportes/reporte2/reporte2.component';
 @NgModule({
   declarations: [AppComponent, MesaComponent, CartaComponent, LoginComponent, SignupComponent, Reporte1Component, Reporte2Component],
   imports: [
-    NgChartsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
