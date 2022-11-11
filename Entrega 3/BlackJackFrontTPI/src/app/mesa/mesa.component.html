@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="mt-2">
+    <h1 class="text-center text-white">♠ Blackjack</h1>
+    <div class="d-flex">
+      <button
+        class="logout d-flex align-items-center px-3 btn-danger"
+        (click)="logout()"
+      >
+        <i class="fa fa-arrow-right-from-bracket mr-2"></i> Logout
+      </button>
+    </div>
+  </div>
+  <button class="reportes btn-primary px-2" routerLink="/reportes">
+    Reportes
+  </button>
+  <div class="container mx-auto py-3 row">
+    <div class="col-12 d-flex justify-content-center">
+      <button
+        class="btn"
+        [disabled]="flagNuevaPartida"
+        (click)="nuevaPartida()"
+      >
+        Start Game
+      </button>
+    </div>
+  </div>
+  <hr class="text-white hr" />
+
+  <div class="mesa" id="compu">
+    <div class="mano-computadora" id="compu" *ngFor="let mano of jugadores">
+      <div class="jugador">
+        <h2 class="text-center text-white crupier-hand">Dealer's Hand</h2>
+        <div>
+          <p class="text-white text-center point-player py-2">
+            points: {{ puntosCompu }}
+          </p>
+        </div>
+      </div>
+      <div *ngFor="let cj of manoCompu; let i = index" [attr.data-index]="i">
+        <app-carta
+          [palo]="cj.palo"
+          [numero]="cj.numero"
+          [valor]="cj.valor"
+          [orden]="cj.orden"
+          [index]="i"
+          [visible]="cj.orden == 2 || !flagNuevaPartida"
+        ></app-carta>
+      </div>
+    </div>
+  </div>
+  <div class="mesa">
+    <div class="mano" id="jugador" *ngFor="let mano of jugadores">
+      <div *ngFor="let cj of manoJugador; let i = index" [attr.data-index]="i">
+        <app-carta
+          [palo]="cj.palo"
+          [numero]="cj.numero"
+          [valor]="cj.valor"
+          [orden]="cj.orden"
+          [index]="i"
+          [visible]="true"
+        ></app-carta>
+      </div>
+      <div class="jugador">
+        <h2 class="text-center text-white crupier-hand">Player's Hand</h2>
+        <div>
+          <p class="text-white text-center point-player py-2">
+            points: {{ puntosJugador }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="controles" id="controles">
+    <button
+      [disabled]="!flagNuevaPartida"
+      (click)="pedirCarta()"
+      class="btn mx-3 px-4 btn-ancho"
+    >
+      Hit<i class="fa-solid fa-plus icon-plus ml-1"></i>
+    </button>
+    <button
+      [disabled]="!flagNuevaPartida"
+      class="btn mx-3 px-4 btn-ancho"
+      (click)="pasar()"
+    >
+      Stand <i class="fa-solid fa-hand icon-hand ml-1"></i>
+    </button>
+  </div>
+</div>
+<div
+  ngClass="{{ 'boton notificacion notificacion__' + tipoAlerta }}"
+  *ngIf="alerta"
+  (click)="cerrarNotificacion()"
+>
+  {{ textoAlerta }}
+</div>

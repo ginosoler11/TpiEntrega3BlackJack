@@ -1,0 +1,89 @@
+<div class="container h-100">
+  <div class="d-flex justify-content-center h-100">
+    <div class="user_card">
+      <div class="logros">
+        <div
+          class="d-flex justify-content-center form_container"
+          style="margin-top: 25px; margin-bottom: 25px"
+        >
+          <h1 class="text-white">Reportes</h1>
+        </div>
+
+        <div class="tortas-container">
+          <div
+            class="d-flex justify-content-center align-items-center form_container"
+            style="flex-direction: column"
+          >
+            <div style="margin-top: 25px; margin-bottom: 25px">
+              <h6 class="text-white">
+                Porcentaje de Blackjacks entre jugadores y Croupier
+              </h6>
+            </div>
+            <div class="chart">
+              <canvas
+                baseChart
+                type="'pie'"
+                datasets="pieChartDatasets"
+                labels="pieChartLabels"
+                options="pieChartOptions"
+                plugins="pieChartPlugins"
+                legend="pieChartLegend"
+              >
+              </canvas>
+            </div>
+          </div>
+          <div>
+            <div
+              class="d-flex justify-content-center align-items-center form_container"
+              style="flex-direction: column"
+            >
+              <div style="margin-top: 25px; margin-bottom: 25px">
+                <h6 class="text-white">Resultados de partidas globales</h6>
+              </div>
+              <div class="chart">
+                <canvas
+                  baseChart
+                  type="'pie'"
+                  datasets="pieChartDatasets2"
+                  labels="pieChartLabels2"
+                  options="pieChartOptions2"
+                  plugins="pieChartPlugins2"
+                  legend="pieChartLegend2"
+                >
+                </canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="historico">
+            <div
+              class="d-flex justify-content-center form_container"
+              style="margin-top: 25px; margin-bottom: 25px"
+            >
+              <h6 class="text-white">
+                Cantidad de partidas y jugadores de los ultimos 30 días
+              </h6>
+            </div>
+            <div class="d-flex justify-content-center form_container chart">
+              <canvas
+                baseChart
+                data="barChartData"
+                options="barChartOptions"
+                plugins="barChartPlugins"
+                legend="barChartLegend"
+                type="'bar'"
+              >
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="logout btn btn-danger" (click)="logout()">
+        <i class="fa fa-arrow-right-from-bracket"></i> Logout
+      </button>
+      <button class="estadisticas btn btn-primary" (click)="volver()">
+        <i class="fa fa-arrow-left"></i> Volver a mesa
+      </button>
+    </div>
+  </div>
+</div>
